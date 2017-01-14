@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Adatlap</title>
+            <script type="text/javascript">
+                function get_action(form) {
+                    var input = document.createElement("input");
+                    input.type = "hidden";
+                    input.name = "from";
+                    var url = window.location.href.split('/');
+                    var from = url[4];
+                    input.value = from;
+                    form.appendChild(input);
+                    form.action = '/users/' + document.getElementById('to').value +'/messages';                  
+                }
+        </script>
+    </head>
+    <body>
+        <form method="POST" enctype="application/json" onsubmit="get_action(this)">
+            <textarea name="message" rows="10" cols="50">
+            </textarea>
+            <br>
+            <label>
+                Kinek:
+                <input id="to" name="to" value="" />
+            </label>
+            <br>
+            <input type="submit" value="Küld"/>
+        </form>
+    </body>
+</html>
