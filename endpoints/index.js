@@ -119,7 +119,9 @@ function translate(string) {
     var codes = string.trim().split(' ');
     var response = "";
     codes.forEach(function(code) {
-        response += morse[code].toString();
+        if(code in morse) {
+            response += morse[code].toString();
+        }
     }, this);
     return response;
 }
